@@ -7,12 +7,20 @@ public class Orbit : MonoBehaviour
 {
     [SerializeField] GameObject centerObj;
     [SerializeField]float angle = 50;
+    //public GameObject onOrbitPlanet = null;
+    public static int onOrbitPlanetNum = 0;
    // [SerializeField]int waitFrame;
     
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("入った惑星:"+ other.gameObject.name);       
+        Debug.Log("入った惑星:"+ other.gameObject.name); 
+        //onOrbitPlanet = other.gameObject;
+        if(other.gameObject.name != "Earth")
+        {
+            onOrbitPlanetNum +=1;
+            Debug.Log(onOrbitPlanetNum);
+        }  
     }
 
     void OnTriggerStay(Collider other)
@@ -29,13 +37,17 @@ public class Orbit : MonoBehaviour
         /* ↓　衝突をなくしたいけどColliderをoffにするとOnTriggerが機能しない
          other.gameObject.GetComponent<SphereCollider>();
         other.gameObject.GetComponent<Collider>().enabled = false; */
-       }
 
-       else
+        
+       }
+       
+
+       else if(onOrbitPlanetNum != 7)
        {//Earthなら消えて、エンディングシーンへ
         other.gameObject.SetActive(false);
+        Debug.Log(onOrbitPlanetNum);
 
-        //フェードか数秒待ちをいれたい
+        //本当はフェードか数秒待ちをいれたい
         void Awake()
         {
             StartCoroutine(LoadEnding());
@@ -44,12 +56,25 @@ public class Orbit : MonoBehaviour
         {
            yield return null;
         }
-           SceneManager.LoadScene("Ending");  
         
-             
+           SceneManager.LoadScene("Ending2");              
        }
+
+       else
+       {
+        SceneManager.LoadScene("Ending1");
+       }
+
        
     }
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.name != "Earth")
+        {onOrbitPlanetNum -= 1;
+        Debug.Log(onOrbitPlanetNum);
+        }
+    }
+   
 }
 
     

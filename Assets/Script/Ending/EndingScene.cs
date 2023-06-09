@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class Score : MonoBehaviour
+public class EndingScene : MonoBehaviour
 {
-    public Text scoreText = null;
     // Start is called before the first frame update
     void Start()
     {
-        scoreText = GetComponent<Text>();
-        //scoreText.text = "Score" + GManager.instance.score;
+        
+    }
+
+    public void PressFinish()
+    {
+        Orbit.onOrbitPlanetNum = 0;
+        Debug.Log("Press to title");
+        SceneManager.LoadScene("TitleScene");
     }
 
     // Update is called once per frame
