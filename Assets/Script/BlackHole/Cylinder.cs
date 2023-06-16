@@ -6,6 +6,8 @@ public class Cylinder : MonoBehaviour
 {
     [SerializeField] float angle = 50;
     // Start is called before the first frame update
+    public AudioClip se;
+
     void Start()
     {
         
@@ -21,6 +23,7 @@ public class Cylinder : MonoBehaviour
         Debug.Log("落ちた惑星："+ other.gameObject.name);
        if(other.gameObject.name != "Earth")
         {
+            AudioSource.PlayClipAtPoint(se, transform.position);
             other.gameObject.SetActive(false);
         }
 
