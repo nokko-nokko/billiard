@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerObj: {fileID: 671313343}
   angle: 80
+  se: {fileID: 8300000, guid: ca92002856f67471cb4cf7b2b8e3cc7a, type: 3}
 --- !u!1 &547968540
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,6 +2312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerObj: {fileID: 671313343}
   angle: 75
+  se: {fileID: 0}
 --- !u!136 &1246705536
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -10,10 +10,11 @@ public class Orbit : MonoBehaviour
     //public GameObject onOrbitPlanet = null;
     public static int onOrbitPlanetNum = 0;
    // [SerializeField]int waitFrame;
-    
+    public AudioClip se;
 
     void OnTriggerEnter(Collider other)
     {
+        AudioSource.PlayClipAtPoint(se, transform.position);
         Debug.Log("入った惑星:"+ other.gameObject.name); 
         //onOrbitPlanet = other.gameObject;
         if(other.gameObject.name != "Earth")
